@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Tasks JSF!</title>
+</h:head>
+<h:body>
+	<p:fieldset legend="Tasks" style="width:750px">
+		<h:form value="#{taskBean.tasks}" var="task">
+			<p:panelGrid columns="2" >
+				<h:outputLabel for="data_inicio" value="Date Init"></h:outputLabel>
+				<p:calendar id="data_inicio" value="#{taskBean.task.data_inicio}"
+					showOn="button" />
+				<h:outputLabel for="description" value="Descripition"></h:outputLabel>
+				<p:inputTextarea id="description"
+					value="#{task.descripition}" style="width:610px"
+					placeholder="Descripition"></p:inputTextarea>
+				<h:outputLabel for="status" value="Status"></h:outputLabel>
+				<p:selectOneMenu id="status" value="#{task.status}"
+					style="width:230px">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItem itemLabel="Pending" itemValue="Pending" />
+					<f:selectItem itemLabel="Progress" itemValue="Progress" />
+					<f:selectItem itemLabel="Done" itemValue="Done" />
+				</p:selectOneMenu>
+				<h:outputLabel for="data_fim" value="Date End"></h:outputLabel>
+				<p:calendar id="data_fim" value="#{task.data_fim}"
+					showOn="button" />
+				<p:commandButton value="Save" actionListener="#{taskBean.update}"
+					action="index.xhtml" icon="ui-icon-disk"/>
+				<p:button value="Cancel" outcome="index.xhtml" icon="ui-icon-cancel"></p:button>
+			</p:panelGrid>
+		</h:form>
+	</p:fieldset>
+</h:body>
+</html>
